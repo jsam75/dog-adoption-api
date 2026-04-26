@@ -12,3 +12,18 @@ The folder structure designed by our software architects ensures adherence to be
 This structure provides a solid foundation for building a well-organized, scalable backend service. By separating concerns into dedicated directories and files, your project remains clean, navigable, and easier to debug and extend.
 
 View the rubric for this assessment [here](https://storage.googleapis.com/hatchways.appspot.com/employers/springboard/student_rubrics/Dog%20Adoption%20Platform%20Rubric.pdf)
+
+---
+
+### Developer Notes (Learning-Focused Documentation)
+
+This project includes more detailed inline comments than what is used in production codebase.
+
+Reason:
+This is the only complete backend assignment for this course prior to the capstone and it is intentionally documented as a long-term reference for:
+- API design patterns
+- Authentication 
+- Debugging edge case
+- Testing setup (Mocha/Chai)
+
+In a production environment, comments would be more concise and focused on maintainability for team collaboration. 

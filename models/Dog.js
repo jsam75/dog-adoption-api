@@ -1,3 +1,4 @@
+// Import mongoose to define the schema and model for Dog
 const mongoose = require('mongoose');
 
 // Define what Dog looks like in DB

@@ -1,10 +1,14 @@
+// Load environment variables from .env file
 require('dotenv').config();
 
-// Imports
+// Imports:
+
+  // Import necessary libraries and modules for the Express app
 const express = require('express');
 const cors = require('cors');
 const connectDB = require('./db');
 
+  // Import route files to use in the app
 const dogsRoutes = require('./routes/dogs');
 
 const testRoutes = require('./routes/testRoutes');

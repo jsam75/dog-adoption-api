@@ -1,3 +1,5 @@
+// Import User model and authentication libraries to interact with the users collection in DB 
+// and handle password hashing and token generation
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -63,7 +65,7 @@ const registerUser = async (req, res) => {
         if (!email || !password) {
           return res.status(400).json({ error: 'Email and password are required.' });
         }
-
+        // Normalize email for consistent lookup
         const normalizedEmail = email.trim().toLowerCase();
 
         // Find user by email using Mongoose (normalize email)
@@ -103,7 +105,7 @@ const registerUser = async (req, res) => {
       }
     };
    
-   
+ // Export functions for routes to use  
 module.exports = {
   registerUser,
   loginUser

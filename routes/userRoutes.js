@@ -4,11 +4,10 @@
 const express = require('express');
 const router = express.Router();
 
-// Import the controller function for user registration
+// Import controller functions for user routes to use
 const { registerUser, loginUser } = require('../controllers/userController');
-// @route   POST /register
-// @desc    Register a new user
-// @access  Public
+
+// Define the routes for user registration and login
 router.post('/register', registerUser);
 router.post('/login', loginUser);
 

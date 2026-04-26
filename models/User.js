@@ -1,5 +1,7 @@
+// Import mongoose to define the schema and model for User
 const mongoose = require('mongoose');
 
+// Define what User looks like in DB
 const userSchema = new mongoose.Schema(
   {
     // User's full name
@@ -32,6 +34,7 @@ const userSchema = new mongoose.Schema(
   }
 );
 
+// Take schema and make it usable
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;

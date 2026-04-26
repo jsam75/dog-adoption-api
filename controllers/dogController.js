@@ -1,3 +1,4 @@
+// Import Dog model to interact with the dogs collection in DB
 const Dog = require('../models/Dog');
 
 // Get Dog function
@@ -54,7 +55,7 @@ const createDog = async (req, res) => {
       return res.status(400).json({ error: 'Name and breed are required.' });
     }
 
-    // Create and save the Dog document - only creation path to avoid conflict/duplicates
+    // Create and save the Dog document - only one creation path to avoid conflict/duplicates
     const createdDog = await Dog.create(dogData);
 
     // Respond with 201 and the created dog
@@ -64,6 +65,7 @@ const createDog = async (req, res) => {
 }
 };
 
+// Adopt Dog function
 const adoptDog = async (req, res) => {
   try {
     const dogId = req.params.id;
@@ -140,7 +142,7 @@ const getMyDogs = async (req, res) => {
     }
   }; 
 
-
+// Export functions for routes to use
 module.exports = {
   getDogs,
   createDog,
