@@ -1,6 +1,4 @@
-// User Routes for the Node.js Express API
-// Handles user-related routes only (no business logic)
-
+// Import express to create the router for user-related routes
 const express = require('express');
 const router = express.Router();
 

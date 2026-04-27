@@ -4,9 +4,11 @@ const jwt = require('jsonwebtoken');
 // Middleware function to protect routes and ensure the user is authenticated
 const authMiddleware = (req, res, next) => {
   try {
+    
     // Debugging: Log the Authorization header to see what is being received
-    console.log("AUTH HEADER:", req.headers.authorization);
+    //console.log("AUTH HEADER:", req.headers.authorization);
 
+    // Check if the Authorization header is present and properly formatted
     const authHeader = req.headers.authorization;
 
     if (!authHeader || typeof authHeader !== 'string' || !authHeader.startsWith('Bearer ')) {
@@ -16,12 +18,15 @@ const authMiddleware = (req, res, next) => {
     // Extract the token from the header (remove 'Bearer ' prefix and any trailing semicolons)
     const token = authHeader.split(' ')[1].replace(/;$/, '');
 
+    // Verify the token using the JWT secret key from environment variables
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
     req.user = decoded;
 
+    // If verification is successful, call next() to proceed to the protected route handler
     next();
 
+    // If verification fails, it will throw an error and be caught in the catch block below
   } catch (err) {
     console.error(err);
     return res.status(401).json({ error: 'Not authorized' });
@@ -30,6 +35,7 @@ const authMiddleware = (req, res, next) => {
 
 // Export for routes to use
 module.exports = authMiddleware;
+
 
 /* Debugging Notes
 Insomnia was used for manual testing (it's just the API client tool I happened to learn first)

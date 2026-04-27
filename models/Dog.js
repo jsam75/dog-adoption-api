@@ -41,4 +41,5 @@ const DogSchema = new mongoose.Schema(
 // Take schema and make it usable
 const Dog = mongoose.model('Dog', DogSchema);
 
+// Export the Dog model for use in controllers
 module.exports = Dog;

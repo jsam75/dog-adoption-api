@@ -16,6 +16,7 @@ const getDogs = async (req, res) => {
 
     const skip = (page - 1) * limit;
 
+    // Add filters based on query parameters if they are provided
     if (breed) {
       filter.breed = breed;
     }
@@ -28,6 +29,7 @@ const getDogs = async (req, res) => {
         filter.adopted = false;
       }
     }
+    // Get total count of dogs matching the filter for pagination info
     const total = await Dog.countDocuments(filter);
 
     // Give pagination info to help navigation
@@ -77,6 +79,7 @@ const adoptDog = async (req, res) => {
       return res.status(404).json({ message: "Dog not found." });
     }
 
+    // Check if the dog is already adopted
     if (dog.adopted) {
       return res.status(400).json({ message: "Dog is already adopted." });
     }
@@ -84,6 +87,7 @@ const adoptDog = async (req, res) => {
     dog.adopted = true;
     await dog.save();
 
+    // Return the updated dog information
     return res.status(200).json(dog);
   } catch (error) {
     return res.status(500).json({ message: error.message });

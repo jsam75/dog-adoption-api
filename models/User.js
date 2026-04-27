@@ -37,4 +37,5 @@ const userSchema = new mongoose.Schema(
 // Take schema and make it usable
 const User = mongoose.model('User', userSchema);
 
+// Export the User model for use in controllers
 module.exports = User;

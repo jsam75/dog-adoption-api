@@ -1,3 +1,4 @@
+// Import express to create the router for dog-related routes
 const express = require('express');
 const router = express.Router();
 
@@ -7,10 +8,10 @@ const { getDogs, createDog, adoptDog, deleteDog, getMyDogs, getAdoptedDogs } = r
 // Import middleware
 const authMiddleware = require('../middlewares/authMiddleware');
 
-// Define Routes - order matters! 1. Static routes, 2. General, 3. Dynamic routes with :id, 
+// Define Routes - order matters! 1. Static routes, 2. General Collection routes, 3. Dynamic routes with :id, 
 // 4. Catch-all routes (optional) - if used, helps avoid route conflicts and ensures correct route matching
 
-// Static routes first
+// Static routes 
 router.get('/my-dogs', authMiddleware, getMyDogs);
 router.get('/adopted', authMiddleware, getAdoptedDogs);
 
@@ -18,7 +19,7 @@ router.get('/adopted', authMiddleware, getAdoptedDogs);
 router.post('/', authMiddleware, createDog);
 router.get('/', getDogs);
 
-// Dynamic routes next (non-:id last)
+// Dynamic routes (non-:id last)
 router.patch('/:id/adopt', authMiddleware, adoptDog);
 router.delete('/:id', authMiddleware, deleteDog);
 

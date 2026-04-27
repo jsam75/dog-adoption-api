@@ -10,6 +10,8 @@ const registerUser = async (req, res) => {
     // Accept name, email, password from the request body
     const { name, email, password } = req.body;
 
+    console.log('REQ BODY:', req.body);
+
     // Validate required fields
     if (!name || !email || !password) {
       return res.status(400).json({ error: 'Name, email, and password are required.' });
